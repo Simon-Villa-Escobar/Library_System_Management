@@ -304,25 +304,7 @@ def cancel_reservation_automatic(request):
         book.reserved_by = None
         book.save()
         
-        
 
-
-# def rent_book(request, book_id):
-#     book = get_object_or_404(Book, pk=book_id)
-    
-#     if book.real_available:
-#         book.real_available = False
-#         book.real_availability = datetime.date.today() + datetime.timedelta(days=14)
-#         book.availability = datetime.date.today() + datetime.timedelta(days=14)
-#     else:
-#         book.real_available = True
-#         book.availability = None
-#         book.available = True
-#         book.reserved = False
-    
-#     book.save()
-    
-#     return HttpResponseRedirect(reverse('book_details', args=(book_id,)))
         
 
 def check_rented(request):
@@ -397,25 +379,7 @@ def rent_name(request, book_id):
     return render(request, 'rent_name.html', {'book': book})
             
             
-# @staff_member_required
-# def confirm_rental(request, book_id, username):
-#     book = get_object_or_404(Book, pk=book_id)
-#     book_history = BookHistory.objects.get(user = user)
-#     show_message_box2 = False
-    
-#     user = User.objects.filter(username=username).first()
-#     book.reserved = False
-#     book.reserved_by = None
-#     book.reserved_date = None
-#     book.real_available = False
-#     book.real_availability = timezone.now() + datetime.timedelta(days=14)
-#     book.availability = timezone.now() + datetime.timedelta(days=14)
-#     book.save()
-#     book_history.rented_books.add(book)
-#     book_history.save()
-    
-#     message = f"The book was successfully rented to {username} until {book.real_availability}."
-#     return render(request, 'rent_name.html', {'book': book, 'message': message, 'show_message_box2': True, 'username': username})
+
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import get_object_or_404, render
